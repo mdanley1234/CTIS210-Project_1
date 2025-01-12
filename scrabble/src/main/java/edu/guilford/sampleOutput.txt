@@ -78,7 +78,7 @@ quince: 17 points
 nectarine: 11 points
 tangerine: 10 points
 strawberry: 18 points
-banana: 8 points
+hippopotomonstrosesquippedaliophobia: -1 points
 Word with the most points: zucchini (24 points)
 Invalid words:
 Enter a word to score (or type 'exit' to quit): word
