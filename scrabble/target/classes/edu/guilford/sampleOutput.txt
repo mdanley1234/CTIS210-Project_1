@@ -1,0 +1,93 @@
+a: 9
+b: 2
+c: 2
+d: 4
+e: 12
+f: 2
+g: 3
+h: 2
+i: 9
+j: 1
+k: 1
+l: 4
+m: 2
+n: 6
+o: 8
+p: 2
+q: 1
+r: 6
+s: 4
+t: 6
+u: 4
+v: 2
+w: 2
+x: 1
+y: 2
+z: 1
+blank: 2
+
+a: 3
+b: 4
+c: 3
+d: 2
+e: 2
+f: 3
+g: 1
+h: 7
+i: 4
+j: 6
+k: 3
+l: 5
+m: 6
+n: 2
+o: 5
+p: 3
+q: 5
+r: 4
+s: 2
+t: 1
+u: 2
+v: 5
+w: 3
+x: 5
+y: 5
+z: 6
+blank: 3
+
+raspberry: 16 points
+ugli: 5 points
+xigua: 13 points
+watermelon: 15 points
+apple: 9 points
+fig: 7 points
+date: 5 points
+elderberry: 16 points
+yam: 8 points
+blueberry: 16 points
+zucchini: 24 points
+papaya: 13 points
+mango: 8 points
+vanilla: 10 points
+kiwi: 11 points
+honeydew: 18 points
+orange: 7 points
+grape: 8 points
+cherry: 14 points
+lemon: 7 points
+quince: 17 points
+nectarine: 11 points
+tangerine: 10 points
+strawberry: 18 points
+banana: 8 points
+Word with the most points: zucchini (24 points)
+Invalid words:
+Enter a word to score (or type 'exit' to quit): word
+Standard: The word 'word' scores 8 points.
+Random: The word 'word' scores 8 points.
+Enter a word to score (or type 'exit' to quit): potato
+Standard: The word 'potato' scores 8 points.
+Random: The word 'potato' scores 7 points.
+Enter a word to score (or type 'exit' to quit): fancy
+Standard: The word 'fancy' scores 13 points.
+Random: The word 'fancy' scores 13 points.
+Enter a word to score (or type 'exit' to quit): exit

@@ -1,6 +1,9 @@
 package edu.guilford;
 
+
+// Tile holds a letter and its value
 public class Tile {
+    
     private char letter;
     private int value;
 

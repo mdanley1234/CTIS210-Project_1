@@ -5,8 +5,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
+/*
+ * The TileSet class is used to create and hold a set of tiles that can be used
+ * by the ScrabbleSet class to calculate word scores.
+ */
+
 public class TileSet {
 
+    // Supported languages
     enum Language {
         ENGLISH
     }
@@ -16,17 +22,16 @@ public class TileSet {
     private int[] letterCount; // Holds the count of each letter in the tile set
     private ArrayList<Tile> tileSet = new ArrayList<>(); // Holds the tile set
 
+    // Constructor selects language
     public TileSet(Language language) {
         switch (language) {
-            case ENGLISH:
-                generateEnglish();
-                break;
+            case ENGLISH -> generateEnglish();
         }
     }
 
     // Create the English language map and counter
     public void generateEnglish() {
-        // Create counting array
+        // Create counting array (a-z + (space))
         letterCount = new int[27];
         clearCount();
 
@@ -66,7 +71,7 @@ public class TileSet {
         ValueMap.put(' ', 0);
     }
     
-    // Add tile
+    // Add tile (Catches invalid characters)
     public void addTile(char letter) {
         try {
             int value = ValueMap.get(letter);
@@ -77,7 +82,7 @@ public class TileSet {
         }
     }
     
-    // Remove tile
+    // Remove tile (Catches invalid characters & no such element)
     public void removeTile(char letter) {
         try {
             boolean tileRemoved = false;
@@ -109,5 +114,15 @@ public class TileSet {
         for (int i = 0; i < letterCount.length; i++) {
             letterCount[i] = 0;
         }
+    }
+
+    // Get the tile set arrayList
+    public ArrayList<Tile> getTileSet() {
+        return tileSet;
+    }
+
+    // Get the value of a letter
+    public int getValue(char letter) {
+        return ValueMap.get(letter);
     }
 }
