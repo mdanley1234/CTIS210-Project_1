@@ -11,7 +11,7 @@ public class Main {
 
     private static ScrabbleSet scrabbleSet; // Standard English Scrabble set
     private static ScrabbleSet randomScrabbleSet; // Randomized Scrabble set
-
+ 
     public static void main(String[] args) {
         scrabbleSet = new ScrabbleSet(Language.ENGLISH);
         randomScrabbleSet = new ScrabbleSet();
