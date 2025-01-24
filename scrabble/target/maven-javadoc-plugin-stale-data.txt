@@ -1,0 +1,47 @@
+-J-Duser.language=
+-J-Duser.country=
+@options
+@packages
+-encoding
+'UTF-8'
+-protected
+-source
+'17'
+-sourcepath
+'C:/Users/mdanley/Documents/GitHub/CTIS210-Project_1/scrabble/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2025. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/Users/mdanley/Documents/GitHub/CTIS210-Project_1/scrabble/target/reports/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'scrabble 1.0-SNAPSHOT API'
+-use
+-version
+-windowtitle
+'scrabble 1.0-SNAPSHOT API'
+edu.guilford
+C:\Users\mdanley\Documents\GitHub\CTIS210-Project_1\scrabble\src\main\java = 1736532348596
+C:\Users\mdanley\Documents\GitHub\CTIS210-Project_1\scrabble\target\reports\apidocs\allclasses-index.html = 1737744886294
+C:\Users\mdanley\Documents\GitHub\CTIS210-Project_1\scrabble\target\reports\apidocs\allpackages-index.html = 1737744886298
+C:\Users\mdanley\Documents\GitHub\CTIS210-Project_1\scrabble\target\reports\apidocs\copy.svg = 1737744886362
+C:\Users\mdanley\Documents\GitHub\CTIS210-Project_1\scrabble\target\reports\apidocs\element-list = 1737744886195
+C:\Users\mdanley\Documents\GitHub\CTIS210-Project_1\scrabble\target\reports\apidocs\help-doc.html = 1737744886349
+C:\Users\mdanley\Documents\GitHub\CTIS210-Project_1\scrabble\target\reports\apidocs\index-all.html = 1737744886333
+C:\Users\mdanley\Documents\GitHub\CTIS210-Project_1\scrabble\target\reports\apidocs\index.html = 1737744886343
+C:\Users\mdanley\Documents\GitHub\CTIS210-Project_1\scrabble\target\reports\apidocs\link.svg = 1737744886366
+C:\Users\mdanley\Documents\GitHub\CTIS210-Project_1\scrabble\target\reports\apidocs\member-search-index.js = 1737744886312
+C:\Users\mdanley\Documents\GitHub\CTIS210-Project_1\scrabble\target\reports\apidocs\module-search-index.js = 1737744886302
+C:\Users\mdanley\Documents\GitHub\CTIS210-Project_1\scrabble\target\reports\apidocs\overview-tree.html = 1737744886273
+C:\Users\mdanley\Documents\GitHub\CTIS210-Project_1\scrabble\target\reports\apidocs\package-search-index.js = 1737744886306
+C:\Users\mdanley\Documents\GitHub\CTIS210-Project_1\scrabble\target\reports\apidocs\script.js = 1737744886359
+C:\Users\mdanley\Documents\GitHub\CTIS210-Project_1\scrabble\target\reports\apidocs\search-page.js = 1737744886375
+C:\Users\mdanley\Documents\GitHub\CTIS210-Project_1\scrabble\target\reports\apidocs\search.html = 1737744886338
+C:\Users\mdanley\Documents\GitHub\CTIS210-Project_1\scrabble\target\reports\apidocs\search.js = 1737744886371
+C:\Users\mdanley\Documents\GitHub\CTIS210-Project_1\scrabble\target\reports\apidocs\stylesheet.css = 1737744886355
+C:\Users\mdanley\Documents\GitHub\CTIS210-Project_1\scrabble\target\reports\apidocs\tag-search-index.js = 1737744886316
+C:\Users\mdanley\Documents\GitHub\CTIS210-Project_1\scrabble\target\reports\apidocs\type-search-index.js = 1737744886309
