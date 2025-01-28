@@ -8,40 +8,13 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        // // Time the reading process
-        // long readStartTime = System.nanoTime();
-        // Word[] words = readWordsFromFile("scrabble\\src\\main\\java\\edu\\guilford\\testFiles\\frankenstein.txt");
-        // long readEndTime = System.nanoTime();
-        // long readDuration = (readEndTime - readStartTime) / 1_000_000; // Convert to milliseconds
-
-        // // Print words and their scores before sorting
-        // System.out.println("Before sorting:");
-        // for (Word word : words) {
-        //     System.out.println(word.getString() + ": " + word.calculateScore() + " points");
-        // }
-
-        // // Time the sorting process
-        // long sortStartTime = System.nanoTime();
-        // Arrays.sort(words);
-        // long sortEndTime = System.nanoTime();
-        // long sortDuration = (sortEndTime - sortStartTime) / 1_000_000; // Convert to milliseconds
-
-        // // Print words and their scores after sorting
-        // System.out.println("After sorting:");
-        // for (Word word : words) {
-        //     System.out.println(word.getString() + ": " + word.calculateScore() + " points");
-        // }
-
-        // // Print the sorting duration and number of words
-        // System.out.println("Number of words: " + words.length);
-        // System.out.println("Reading took " + readDuration + " milliseconds");
-        // System.out.println("Sorting took " + sortDuration + " milliseconds");
-
         // PROJECT 3 TESTING DEMO (SCRABBLE SECTION)
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the number of words: ");
         int numWords = scanner.nextInt();
         scanner.close();
+
+        System.out.println("");
 
         // Create random word array
         Word[] words = new Word[numWords];
@@ -55,38 +28,105 @@ public class Main {
             System.out.println(word.toString());
         }
 
-        // Testing 3 different sorting methods
+        System.out.println("");
 
-        // Selection Sort
-        mergeSort(words);
+        // 3 Different Sorting Methods
+
+        // Merge Sort (O(N log N))
+        mergeWrapper(words);
         // Print the sorted word array
-        System.out.println("Sorted words (Merge):");
-        for (Word word : words) {
-            System.out.println(word.toString());
-        }
+        // System.out.println("Sorted words (Merge):");
+        // for (Word word : words) {
+        //     System.out.println(word.toString());
+        // }
 
         scrambleArray(words);
 
+        // Selection Sort (O(N^2))
         selectionSort(words);
         // Print the sorted word array
-        System.out.println("Sorted words (Selection):");
-        for (Word word : words) {
-            System.out.println(word.toString());
-        }
+        // System.out.println("Sorted words (Selection):");
+        // for (Word word : words) {
+        //     System.out.println(word.toString());
+        // }
 
         scrambleArray(words);
 
+        // Array Sort (N log N)
         arraySort(words);
         // Print the sorted word array
-        System.out.println("Sorted words (Array):");
-        for (Word word : words) {
-            System.out.println(word.toString());
+        // System.out.println("Sorted words (Array):");
+        // for (Word word : words) {
+        //     System.out.println(word.toString());
+        // }
+
+        System.out.println("");
+
+        // 3 Different Search Methods
+
+        // Select a random word from the array (DEFINED)
+        java.util.Random random = new java.util.Random();
+        Word targetWord = words[random.nextInt(words.length)];
+        String targetString = targetWord.getString();
+        System.out.println("Target word for search: " + targetWord);
+
+        // Linear Search
+        int linearSearchIndex = linearSearch(words, targetString);
+        if (linearSearchIndex != -1) {
+            System.out.println("Linear search found the word at index: " + linearSearchIndex);
+        } else {
+            System.out.println("Linear search did not find the word.");
         }
 
-        // Search methods
+        // Binary Search
+        int binarySearchIndex = binarySearch(words, targetWord);
+        if (binarySearchIndex != -1) {
+            System.out.println("Binary search found the word at index: " + binarySearchIndex);
+        } else {
+            System.out.println("Binary search did not find the word.");
+        }
 
+        // Built-in Binary Search (Array)
+        int builtInBinarySearchIndex = builtInBinarySearch(words, targetString);
+        if (builtInBinarySearchIndex >= 0) {
+            System.out.println("Built-in binary search found the word at index: " + builtInBinarySearchIndex);
+        } else {
+            System.out.println("Built-in binary search did not find the word.");
+        }
+
+        System.out.println("");
+
+        // Searching for a non-existent word (UNDEFINED)
+        // Generate a non-existent word
+        String nonExistentString = "zzzzzzzzzz"; // Assuming this word does not exist in the array
+        Word nonExistentWord = new Word(nonExistentString);
+        System.out.println("Non-existent word for search: " + nonExistentString);
+
+        // Linear Search for non-existent word
+        int linearSearchNonExistentIndex = linearSearch(words, nonExistentString);
+        if (linearSearchNonExistentIndex != -1) {
+            System.out.println("Linear search found the non-existent word at index: " + linearSearchNonExistentIndex);
+        } else {
+            System.out.println("Linear search did not find the non-existent word.");
+        }
+
+        // Binary Search for non-existent word
+        int binarySearchNonExistentIndex = binarySearch(words, nonExistentWord);
+        if (binarySearchNonExistentIndex != -1) {
+            System.out.println("Binary search found the non-existent word at index: " + binarySearchNonExistentIndex);
+        } else {
+            System.out.println("Binary search did not find the non-existent word.");
+        }
+
+        // Built-in Binary Search for non-existent word (Array)
+        int builtInBinarySearchNonExistentIndex = builtInBinarySearch(words, nonExistentString);
+        if (builtInBinarySearchNonExistentIndex >= 0) {
+            System.out.println("Built-in binary search found the non-existent word at index: " + builtInBinarySearchNonExistentIndex);
+        } else {
+            System.out.println("Built-in binary search did not find the non-existent word.");
+        }
+        System.out.println("");
     }
-
     
     // Sort Method 1 (Selection Sort)
     static public void selectionSort(Word[] words) {
@@ -110,8 +150,17 @@ public class Main {
         System.out.println("Selection sort took " + duration + " milliseconds");
     }
 
+    // Sort 2 Wrapper
+    public static void mergeWrapper(Word[] words) {
+        long startTime = System.nanoTime();
+        mergeSort(words);
+        long endTime = System.nanoTime();
+        long duration = (endTime - startTime) / 1_000_000; // Convert to milliseconds
+        System.out.println("Merge sort took " + duration + " milliseconds");
+    }
+
     // Sort Method 2 (Merge Sort)
-    static public void mergeSort(Word[] words) {
+    private static void mergeSort(Word[] words) {
         long startTime = System.nanoTime();
 
         if (words.length > 1) {
@@ -124,10 +173,6 @@ public class Main {
             merge(words, left, right);
         }
 
-        long endTime = System.nanoTime();
-        long duration = (endTime - startTime) / 1_000_000; // Convert to milliseconds
-
-        // System.out.println("Merge sort took " + duration + " milliseconds");
     }
 
     private static void merge(Word[] result, Word[] left, Word[] right) {
@@ -192,37 +237,38 @@ public class Main {
     }
 
     // Binary Search Method
-    static public int binarySearch(Word[] words, String target) {
+    public static int binarySearch(Word[] words, Word target) {
         long startTime = System.nanoTime();
 
         int left = 0;
         int right = words.length - 1;
 
         while (left <= right) {
-            int mid = left + (right - left) / 2;
-            int comparison = words[mid].getString().compareTo(target);
+            int mid = left + (right - left) / 2; // Avoids overflow compared to (left + right) / 2
+
+            int comparison = words[mid].compareTo(target);
 
             if (comparison == 0) {
-            long endTime = System.nanoTime();
-            long duration = (endTime - startTime) / 1_000_000; // Convert to milliseconds
-            System.out.println("Binary search took " + duration + " milliseconds");
-            return mid;
+                long endTime = System.nanoTime();
+                long duration = (endTime - startTime) / 1_000_000; // Convert to milliseconds
+                System.out.println("Binary search took " + duration + " milliseconds");
+                return mid; // Found the target
             } else if (comparison < 0) {
-            left = mid + 1;
+                left = mid + 1; // Target is in the right half
             } else {
-            right = mid - 1;
+                right = mid - 1; // Target is in the left half
             }
         }
 
         long endTime = System.nanoTime();
         long duration = (endTime - startTime) / 1_000_000; // Convert to milliseconds
         System.out.println("Binary search took " + duration + " milliseconds");
-        return -1;
+        return -1; // Target not found
     }
 
     // Built-in Binary Search Method
     static public int builtInBinarySearch(Word[] words, String target) {
-        arraySort(words);
+        java.util.Arrays.sort(words);
         long startTime = System.nanoTime();
 
         int index = java.util.Arrays.binarySearch(words, new Word(target));
