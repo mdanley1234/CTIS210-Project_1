@@ -4,41 +4,43 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
+/**
+ * The ScrabbleSet class represents a collection of 100 tiles for use in Scrabble-like games.
+ * It provides functionality to create a tile set based on a specific language or a randomized set.
+ * Additionally, it can calculate the point value of a given word based on the tiles available in the set.
+ */
 public class ScrabbleSet {
 
+    private TileSet tileSet; // The tile set containing the tiles for the Scrabble game.
 
-    /*
-     * The ScrabbleSet class is used to create and hold a TileSet object that
-     * contains 100 tiles. If a language is specified, the tile set will be created
-     * according to a csv file that contains the letter distribution for that
-     * language. If no language is specified, the tile set will be created randomly,
-     * with a specified minimum letter count and maximum vowel count.
+    /**
+     * Creates a Scrabble tile set based on a specified language.
+     * The tile set is populated using a CSV file containing the letter distribution for the chosen language.
+     * 
+     * @param language The language to be used for the tile set (e.g., ENGLISH).
+     * @throws IllegalArgumentException If the specified language is unsupported.
      */
-
-    private TileSet tileSet; // The tile set
-
-    // Standard 100 tile set using csv file for letter distribution
     public ScrabbleSet(TileSet.Language language) {
         tileSet = new TileSet(language);
         String csvFileLocation = new String();
 
-        // Select language
+        // Select the appropriate CSV file for the given language.
         switch (language) {
             case ENGLISH:
                 csvFileLocation = "scrabble\\src\\main\\java\\edu\\guilford\\letterDistributions\\English_Standard.csv";
-            break;
+                break;
             default:
                 throw new IllegalArgumentException("Unsupported language: " + language);
         }
 
-        // Read the CSV file and load the tile set
+        // Read the CSV file and populate the tile set.
         try (BufferedReader br = new BufferedReader(new FileReader(csvFileLocation))) {
             String line;
             while ((line = br.readLine()) != null) {
-                // Process the line
+                // Process each line in the CSV file.
                 String[] values = line.split(",");
                 char letter = values[0].charAt(0);
-                // Catch blank tiles
+                // Handle blank tiles.
                 if (letter == '_') {
                     letter = ' ';
                 }
@@ -51,17 +53,19 @@ public class ScrabbleSet {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
-    // Randomized tile set of 100 tiles | NOTE: ASSUMES ENGLISH
-    // Minimum of 1 of each letter, individual vowel maximum of 6
+    /**
+     * Creates a randomized Scrabble tile set with 100 tiles.
+     * Assumes the English language for letter distribution. Enforces a minimum count of each letter 
+     * and a maximum count for vowels.
+     */
     public ScrabbleSet() {
         tileSet = new TileSet(TileSet.Language.ENGLISH);
-        int letterMin = 1; // Minimum of 1 of each letter (Can only be 0, 1, 2, or 3)
-        int vowelMax = 5; // Vowel maximum of 5
+        int letterMin = 1; // Minimum of 1 of each letter (a-z and blank).
+        int vowelMax = 5; // Maximum number of any individual vowel.
 
-        // Generate minimum requirements (letterMin)
+        // Add the minimum required count for each letter.
         for (char letter = 'a'; letter <= 'z'; letter++) {
             for (int i = 0; i < letterMin; i++) {
                 tileSet.addTile(letter);
@@ -71,21 +75,27 @@ public class ScrabbleSet {
             tileSet.addTile(' ');
         }
 
-        // Complete randomized generation
+        // Randomly generate the remaining tiles while enforcing vowel constraints.
         while (tileSet.getTileSet().size() < 100) {
-            // Select random letter (a-z + (blank))
             char letter = (char) (Math.random() * 27 + 'a' - 1);
             if (letter == '`') {
                 letter = ' ';
             }
 
-            // Prevent vowel maximum from being exceeded
-            if (!(letter == 'a' || letter == 'e' || letter == 'i' || letter == 'o' || letter == 'u') || tileSet.getTileCount(letter) < vowelMax) {
+            // Ensure the vowel maximum is not exceeded.
+            if (!(letter == 'a' || letter == 'e' || letter == 'i' || letter == 'o' || letter == 'u') 
+                    || tileSet.getTileCount(letter) < vowelMax) {
                 tileSet.addTile(letter);
             }
         }
     }
-    
+
+    /**
+     * Returns a string representation of the Scrabble tile set, 
+     * displaying the count of each letter and blank tiles.
+     * 
+     * @return A string showing the counts of each letter and blank tiles in the tile set.
+     */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -96,9 +106,15 @@ public class ScrabbleSet {
         return sb.toString();
     }
 
-    // Returns points that a word is worth | Currently only works in ENGLISH
+    /**
+     * Calculates the total point value of a given word based on the tile values in the set.
+     * If the word cannot be formed due to insufficient tiles, the method returns -1.
+     * 
+     * @param word The word to calculate the point value for.
+     * @return The total point value of the word, or -1 if the word cannot be formed.
+     * @throws IllegalArgumentException If the word contains invalid characters.
+     */
     public int calculatePoints(String word) {
-        // Create an array to store the count of each letter
         int[] letterCounts = new int[26];
         for (char letter : word.toCharArray()) {
             if (Character.isLetter(letter)) {
@@ -108,28 +124,25 @@ public class ScrabbleSet {
             }
         }
 
-        // Create points counter and blanks counter
-        int points = 0; // Holds the total points for the word
-        int blanks = 0; // Holds the number of blanks needed for word to be processed
+        int points = 0; // Total points for the word.
+        int blanks = 0; // Number of blank tiles needed.
 
-        // Iterate through the letterCounts array to process each letter and its count
         for (int i = 0; i < letterCounts.length; i++) {
             char letter = (char) (i + 'a');
             for (int j = 0; j < letterCounts[i]; j++) {
                 if (j < tileSet.getTileCount(letter)) {
-                    points += tileSet.getValue(letter); // Tiles are tracked from the Tile Set for each letter
+                    points += tileSet.getValue(letter);
                 } else {
-                    blanks++; // If there are not enough tiles, a blank is used
+                    blanks++;
                 }
             }
         }
 
-        // If there are enough blanks to cover the excess letters, calculate the points
+        // If there are enough blanks to cover the excess letters, return the total points.
         if (blanks <= tileSet.getTileCount(' ')) {
             return points;
-        }
-        else {
-            return -1; // Otherwise, return -1 to indicate the word is invalid
+        } else {
+            return -1; // Not enough tiles to form the word.
         }
     }
 }

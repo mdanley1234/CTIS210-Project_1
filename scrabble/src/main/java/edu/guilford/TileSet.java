@@ -5,31 +5,39 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
-/*
- * The TileSet class is used to create and hold a set of tiles that can be used
- * by the ScrabbleSet class to calculate word scores.
+/**
+ * The TileSet class is used to create and manage a set of tiles for a word game
+ * (such as Scrabble). It holds information about the tiles, their counts, and their values.
+ * The class allows for adding/removing tiles, checking the tile count, and accessing tile values.
  */
-
 public class TileSet {
 
-    // Supported languages
+    /**
+     * Enum representing supported languages.
+     */
     enum Language {
         ENGLISH
     }
-    
+
     private Map<Character, Integer> LanguageMap = new HashMap<>(); // Maps letters to a location index in the count array
     private Map<Character, Integer> ValueMap = new HashMap<>(); // Maps letters to their value
     private int[] letterCount; // Holds the count of each letter in the tile set
     private ArrayList<Tile> tileSet = new ArrayList<>(); // Holds the tile set
 
-    // Constructor selects language
+    /**
+     * Constructs a TileSet for a specified language.
+     * 
+     * @param language The language for which to generate the tile set.
+     */
     public TileSet(Language language) {
         switch (language) {
             case ENGLISH -> generateEnglish();
         }
     }
 
-    // Create the English language map and counter
+    /**
+     * Initializes the tile set and letter counts for the English language.
+     */
     public void generateEnglish() {
         // Create counting array (a-z + (space))
         letterCount = new int[27];
@@ -41,7 +49,7 @@ public class TileSet {
         }
         LanguageMap.put(' ', 26);
 
-        // Create value map
+        // Create value map for English tiles
         ValueMap.put('a', 1);
         ValueMap.put('b', 3);
         ValueMap.put('c', 3);
@@ -71,7 +79,11 @@ public class TileSet {
         ValueMap.put(' ', 0);
     }
     
-    // Add tile (Catches invalid characters)
+    /**
+     * Adds a tile of the specified letter to the tile set.
+     * 
+     * @param letter The letter of the tile to add.
+     */
     public void addTile(char letter) {
         try {
             int value = ValueMap.get(letter);
@@ -82,7 +94,12 @@ public class TileSet {
         }
     }
     
-    // Remove tile (Catches invalid characters & no such element)
+    /**
+     * Removes a tile of the specified letter from the tile set.
+     * Throws an exception if no such tile exists.
+     * 
+     * @param letter The letter of the tile to remove.
+     */
     public void removeTile(char letter) {
         try {
             boolean tileRemoved = false;
@@ -104,24 +121,40 @@ public class TileSet {
         }
     }
 
-    // Get number of tiles of a certain letter
+    /**
+     * Returns the number of tiles of a specific letter in the tile set.
+     * 
+     * @param letter The letter whose tile count is to be retrieved.
+     * @return The number of tiles of the specified letter.
+     */
     public int getTileCount(char letter) {
         return letterCount[LanguageMap.get(letter)];
     }
 
-    // Clear the count of all letters
+    /**
+     * Clears the count of all letters in the tile set, resetting the counts to zero.
+     */
     public void clearCount() {
         for (int i = 0; i < letterCount.length; i++) {
             letterCount[i] = 0;
         }
     }
 
-    // Get the tile set arrayList
+    /**
+     * Returns the ArrayList of Tile objects in the tile set.
+     * 
+     * @return The list of tiles in the tile set.
+     */
     public ArrayList<Tile> getTileSet() {
         return tileSet;
     }
 
-    // Get the value of a letter
+    /**
+     * Returns the point value of the specified letter.
+     * 
+     * @param letter The letter whose value is to be retrieved.
+     * @return The point value of the letter.
+     */
     public int getValue(char letter) {
         return ValueMap.get(letter);
     }

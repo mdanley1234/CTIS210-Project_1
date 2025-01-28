@@ -1,10 +1,13 @@
 package edu.guilford;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.Scanner;
 
+/**
+ * The Main class provides functionality for testing and demonstrating various
+ * sorting and searching algorithms on a set of Word objects, including merge sort,
+ * selection sort, and array sort, as well as linear search, binary search, and
+ * built-in binary search.
+ */
 public class Main {
     public static void main(String[] args) {
         // PROJECT 3 TESTING DEMO (SCRABBLE SECTION)
@@ -34,30 +37,30 @@ public class Main {
         // Merge Sort (O(N log N))
         mergeWrapper(words);
         // Print the sorted word array
-        // System.out.println("Sorted words (Merge):");
-        // for (Word word : words) {
-        //     System.out.println(word.toString());
-        // }
+        System.out.println("Sorted words (Merge):");
+        for (Word word : words) {
+            System.out.println(word.toString());
+        }
 
         scrambleArray(words);
 
         // Selection Sort (O(N^2))
         selectionSort(words);
         // Print the sorted word array
-        // System.out.println("Sorted words (Selection):");
-        // for (Word word : words) {
-        //     System.out.println(word.toString());
-        // }
+        System.out.println("Sorted words (Selection):");
+        for (Word word : words) {
+            System.out.println(word.toString());
+        }
 
         scrambleArray(words);
 
         // Array Sort (N log N)
         arraySort(words);
         // Print the sorted word array
-        // System.out.println("Sorted words (Array):");
-        // for (Word word : words) {
-        //     System.out.println(word.toString());
-        // }
+        System.out.println("Sorted words (Array):");
+        for (Word word : words) {
+            System.out.println(word.toString());
+        }
 
         System.out.println("");
 
@@ -128,6 +131,11 @@ public class Main {
     }
     
     // Sort Method 1 (Selection Sort)
+    /**
+     * Sorts an array of Word objects using selection sort.
+     *
+     * @param words The array of Word objects to be sorted
+     */
     static public void selectionSort(Word[] words) {
         long startTime = System.nanoTime();
 
@@ -150,6 +158,11 @@ public class Main {
     }
 
     // Sort 2 Wrapper
+    /**
+     * Sorts an array of Word objects using merge sort.
+     *
+     * @param words The array of Word objects to be sorted
+     */
     public static void mergeWrapper(Word[] words) {
         long startTime = System.nanoTime();
         mergeSort(words);
@@ -192,6 +205,11 @@ public class Main {
     }
 
     // Sort Method 3 (Array Sort)
+    /**
+     * Sorts an array of Word objects using built-in array sort.
+     *
+     * @param words The array of Word objects to be sorted
+     */
     static public void arraySort(Word[] words) {
         long startTime = System.nanoTime();
 
@@ -204,6 +222,11 @@ public class Main {
     }
 
     // Scrambles Array
+    /**
+     * Sorambles a word array for resorting
+     *
+     * @param words The array of Word objects to be sorted
+     */
     static public void scrambleArray(Word[] words) {
         java.util.Random random = new java.util.Random();
         for (int i = words.length - 1; i > 0; i--) {
@@ -217,6 +240,13 @@ public class Main {
     // Testing 3 different searching methods
 
     // Linear Search Method
+    /**
+     * Searches for the index of a target string in a words array
+     *
+     * @param words The array of Word objects to be sorted
+     * @param target The target word string to be located
+     * @return The index of the target Word if found, or -1 if not found
+     */
     static public int linearSearch(Word[] words, String target) {
         long startTime = System.nanoTime();
 
@@ -236,6 +266,13 @@ public class Main {
     }
 
     // Binary Search Method
+    /**
+     * Searches for the index of a target string in a words array
+     *
+     * @param words The array of Word objects to be sorted
+     * @param target The target word string to be located
+     * @return The index of the target Word if found, or -1 if not found
+     */
     public static int binarySearch(Word[] words, Word target) {
         long startTime = System.nanoTime();
 
@@ -266,6 +303,13 @@ public class Main {
     }
 
     // Built-in Binary Search Method
+    /**
+     * Searches for the index of a target string in a words array
+     *
+     * @param words The array of Word objects to be sorted
+     * @param target The target word string to be located
+     * @return The index of the target Word if found, or -1 if not found
+     */
     static public int builtInBinarySearch(Word[] words, String target) {
         java.util.Arrays.sort(words);
         long startTime = System.nanoTime();
@@ -347,48 +391,48 @@ public class Main {
     // }
 
     // Method extracts words from a file and returns them as an array of word objects
-    public static Word[] readWordsFromFile(String filePath) {
-        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-            StringBuilder content = new StringBuilder();
-            String line;
-            while ((line = br.readLine()) != null) {
-                content.append(line).append(" "); // Combines lines into one string
-            }
-            return java.util.Arrays.stream(content.toString().split("\\s+|--|-"))
-                .map(word -> word.replaceAll("[^a-zA-Z]", ""))
-                .filter(word -> !word.isEmpty())
-                .map(word -> new Word(word)) // Assume English
-                .toArray(Word[]::new);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return new Word[0];
-        }
-    }
+    // public static Word[] readWordsFromFile(String filePath) {
+    //     try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+    //         StringBuilder content = new StringBuilder();
+    //         String line;
+    //         while ((line = br.readLine()) != null) {
+    //             content.append(line).append(" "); // Combines lines into one string
+    //         }
+    //         return java.util.Arrays.stream(content.toString().split("\\s+|--|-"))
+    //             .map(word -> word.replaceAll("[^a-zA-Z]", ""))
+    //             .filter(word -> !word.isEmpty())
+    //             .map(word -> new Word(word)) // Assume English
+    //             .toArray(Word[]::new);
+    //     } catch (IOException e) {
+    //         e.printStackTrace();
+    //         return new Word[0];
+    //     }
+    // }
 
     // Method evaluates the points for each word in the array and prints the results
-    public static void evaluatePoints(String[] words, ScrabbleSet thisSet) {
-        String maxWord = "";
-        int maxPoints = 0;
-        java.util.List<String> invalidWords = new java.util.ArrayList<>();
+    // public static void evaluatePoints(String[] words, ScrabbleSet thisSet) {
+    //     String maxWord = "";
+    //     int maxPoints = 0;
+    //     java.util.List<String> invalidWords = new java.util.ArrayList<>();
 
-        for (String word : words) {
-            int points = thisSet.calculatePoints(word);
-            System.out.println(word + ": " + points + " points"); // Print each word
+    //     for (String word : words) {
+    //         int points = thisSet.calculatePoints(word);
+    //         System.out.println(word + ": " + points + " points"); // Print each word
 
-            // Track word with the most points
-            if (points > maxPoints) {
-                maxPoints = points;
-                maxWord = word;
-            }
+    //         // Track word with the most points
+    //         if (points > maxPoints) {
+    //             maxPoints = points;
+    //             maxWord = word;
+    //         }
 
-            // Track invalid words
-            if (points == -1) {
-                invalidWords.add(word);
-            }
-        }
+    //         // Track invalid words
+    //         if (points == -1) {
+    //             invalidWords.add(word);
+    //         }
+    //     }
 
-        // Print statistics
-        System.out.println("Word with the most points: " + maxWord + " (" + maxPoints + " points)");
-        System.out.println("Invalid words: " + String.join(", ", invalidWords));
-    }
+    //     // Print statistics
+    //     System.out.println("Word with the most points: " + maxWord + " (" + maxPoints + " points)");
+    //     System.out.println("Invalid words: " + String.join(", ", invalidWords));
+    // }
 }
