@@ -1,0 +1,47 @@
+Enter the number of words: 10
+Unsorted words:
+tqsxqjahm | Points: 36
+lgkllppiezolvp | Points: 34
+ky | Points: 9
+dbnhmjvyqhtcl | Points: 48
+yvwkqf | Points: 31
+bqfi | Points: 18
+cslytkwgbisnje | Points: 36
+kabzbqfmkbsyz | Points: -1
+nbipborbfgish | Points: 25
+zxiairsuhom | Points: 32
+Sorted words (Merge):
+kabzbqfmkbsyz | Points: -1
+ky | Points: 9
+bqfi | Points: 18
+nbipborbfgish | Points: 25
+yvwkqf | Points: 31
+zxiairsuhom | Points: 32
+lgkllppiezolvp | Points: 34
+cslytkwgbisnje | Points: 36
+tqsxqjahm | Points: 36
+dbnhmjvyqhtcl | Points: 48
+Selection sort took 0 milliseconds
+Sorted words (Selection):
+kabzbqfmkbsyz | Points: -1
+ky | Points: 9
+bqfi | Points: 18
+nbipborbfgish | Points: 25
+yvwkqf | Points: 31
+zxiairsuhom | Points: 32
+lgkllppiezolvp | Points: 34
+cslytkwgbisnje | Points: 36
+tqsxqjahm | Points: 36
+dbnhmjvyqhtcl | Points: 48
+Array sort took 0 milliseconds
+Sorted words (Array):
+kabzbqfmkbsyz | Points: -1
+ky | Points: 9
+bqfi | Points: 18
+nbipborbfgish | Points: 25
+yvwkqf | Points: 31
+zxiairsuhom | Points: 32
+lgkllppiezolvp | Points: 34
+cslytkwgbisnje | Points: 36
+tqsxqjahm | Points: 36
+dbnhmjvyqhtcl | Points: 48
