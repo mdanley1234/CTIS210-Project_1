@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
-
     public static void main(String[] args) {
         // PROJECT 3 TESTING DEMO (SCRABBLE SECTION)
         Scanner scanner = new Scanner(System.in);

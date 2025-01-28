@@ -25,7 +25,7 @@ public class ScrabbleSet {
         // Select language
         switch (language) {
             case ENGLISH:
-                csvFileLocation = "src\\main\\java\\edu\\guilford\\letterDistributions\\English_Standard.csv";
+                csvFileLocation = "scrabble\\src\\main\\java\\edu\\guilford\\letterDistributions\\English_Standard.csv";
             break;
             default:
                 throw new IllegalArgumentException("Unsupported language: " + language);
