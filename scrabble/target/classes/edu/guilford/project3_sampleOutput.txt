@@ -1,47 +1,66 @@
 Enter the number of words: 10
+
 Unsorted words:
-tqsxqjahm | Points: 36
-lgkllppiezolvp | Points: 34
-ky | Points: 9
-dbnhmjvyqhtcl | Points: 48
-yvwkqf | Points: 31
-bqfi | Points: 18
-cslytkwgbisnje | Points: 36
-kabzbqfmkbsyz | Points: -1
-nbipborbfgish | Points: 25
-zxiairsuhom | Points: 32
+ovgwzmard | Points: 28
+ivbxcaxpgjeoer | Points: 37
+hsqsxqrdzegnzj | Points: 49
+xhvzvyfsbpiopw | Points: 54
+dgfgpit | Points: 15
+arej | Points: 11
+kpezd | Points: 21
+cuc | Points: 7
+vcnutbp | Points: 16
+rohuyxztjkf | Points: 47
+
+Merge sort took 0 milliseconds
 Sorted words (Merge):
-kabzbqfmkbsyz | Points: -1
-ky | Points: 9
-bqfi | Points: 18
-nbipborbfgish | Points: 25
-yvwkqf | Points: 31
-zxiairsuhom | Points: 32
-lgkllppiezolvp | Points: 34
-cslytkwgbisnje | Points: 36
-tqsxqjahm | Points: 36
-dbnhmjvyqhtcl | Points: 48
+cuc | Points: 7
+arej | Points: 11
+dgfgpit | Points: 15
+vcnutbp | Points: 16
+kpezd | Points: 21
+ovgwzmard | Points: 28
+ivbxcaxpgjeoer | Points: 37
+rohuyxztjkf | Points: 47
+hsqsxqrdzegnzj | Points: 49
+xhvzvyfsbpiopw | Points: 54
 Selection sort took 0 milliseconds
 Sorted words (Selection):
-kabzbqfmkbsyz | Points: -1
-ky | Points: 9
-bqfi | Points: 18
-nbipborbfgish | Points: 25
-yvwkqf | Points: 31
-zxiairsuhom | Points: 32
-lgkllppiezolvp | Points: 34
-cslytkwgbisnje | Points: 36
-tqsxqjahm | Points: 36
-dbnhmjvyqhtcl | Points: 48
+cuc | Points: 7
+arej | Points: 11
+dgfgpit | Points: 15
+vcnutbp | Points: 16
+kpezd | Points: 21
+ovgwzmard | Points: 28
+ivbxcaxpgjeoer | Points: 37
+rohuyxztjkf | Points: 47
+hsqsxqrdzegnzj | Points: 49
+xhvzvyfsbpiopw | Points: 54
 Array sort took 0 milliseconds
 Sorted words (Array):
-kabzbqfmkbsyz | Points: -1
-ky | Points: 9
-bqfi | Points: 18
-nbipborbfgish | Points: 25
-yvwkqf | Points: 31
-zxiairsuhom | Points: 32
-lgkllppiezolvp | Points: 34
-cslytkwgbisnje | Points: 36
-tqsxqjahm | Points: 36
-dbnhmjvyqhtcl | Points: 48
+cuc | Points: 7
+arej | Points: 11
+dgfgpit | Points: 15
+vcnutbp | Points: 16
+kpezd | Points: 21
+ovgwzmard | Points: 28
+ivbxcaxpgjeoer | Points: 37
+rohuyxztjkf | Points: 47
+hsqsxqrdzegnzj | Points: 49
+xhvzvyfsbpiopw | Points: 54
+
+Target word for search: vcnutbp | Points: 16
+Linear search took 0 milliseconds
+Linear search found the word at index: 3
+Binary search took 0 milliseconds
+Binary search found the word at index: 3
+Built-in binary search took 0 milliseconds
+Built-in binary search found the word at index: 3
+
+Non-existent word for search: zzzzzzzzzz
+Linear search took 0 milliseconds
+Linear search did not find the non-existent word.
+Binary search took 0 milliseconds
+Binary search did not find the non-existent word.
+Built-in binary search took 0 milliseconds
+Built-in binary search did not find the non-existent word.
